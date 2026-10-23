@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#080d19">
+<title>NEXUS Engine 0.3 — Playable Prototype</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="brand"><div class="logo">N</div><div><strong>NEXUS ENGINE</strong><small>PLAYABLE PROTOTYPE 0.3</small></div></div>
+  <span class="status"><i></i> RUNTIME ACTIF</span>
+</header>
+<main>
+  <section class="intro">
+    <p class="eyebrow">GAME CREATION LAB</p>
+    <h1>Construis.<br><em>Joue. Évolue.</em></h1>
+    <p>Un prototype jouable sur téléphone : déplace le joueur, explore la scène, ajoute des objets et sauvegarde ton niveau.</p>
+  </section>
+  <section class="game panel">
+    <div class="panelhead"><b><i></i> SCÈNE DE JEU</b><span id="renderLabel">WEBGL / THREE.JS</span></div>
+    <div id="viewport">
+      <div id="loading">Chargement de la scène 3D…<small>Une connexion Internet est nécessaire pour charger Three.js.</small></div>
+      <div class="hud"><span id="gameState">MODE JEU</span><span id="fps">FPS : --</span></div>
+      <div class="touchpad" id="touchpad">
+        <button data-move="forward" aria-label="Avancer">▲</button>
+        <div class="middle"><button data-move="left" aria-label="Gauche">◀</button><button data-move="back" aria-label="Reculer">▼</button><button data-move="right" aria-label="Droite">▶</button></div>
+      </div>
+      <button id="jump" class="jump">SAUT</button>
+    </div>
+    <div class="stats">
+      <div><small>FPS</small><strong id="fpsStat">--</strong></div>
+      <div><small>OBJETS</small><strong id="objectStat">0</strong></div>
+      <div><small>MODE</small><strong id="modeStat">3D</strong></div>
+    </div>
+  </section>
+  <section class="panel controls">
+    <div class="sectionTitle"><div><p class="eyebrow">ÉDITEUR INTÉGRÉ</p><h2>Studio de scène</h2></div><span class="live">LIVE</span></div>
+    <div class="tabs"><button class="tab active" data-tab="gameTab">Jeu</button><button class="tab" data-tab="buildTab">Construire</button><button class="tab" data-tab="settingsTab">Réglages</button></div>
+    <div id="gameTab" class="tabcontent">
+      <div class="actions"><button id="pauseBtn">⏸ Pause</button><button id="resetBtn">↻ Recommencer</button></div>
+      <p class="hint">Utilise les flèches à l'écran pour déplacer le personnage. Sur ordinateur, WASD ou les flèches du clavier fonctionnent aussi.</p>
+    </div>
+    <div id="buildTab" class="tabcontent hidden">
+      <label for="objectType">Type d'objet</label>
+      <select id="objectType"><option value="box">Cube</option><option value="sphere">Sphère</option><option value="pillar">Pilier</option><option value="tree">Arbre stylisé</option></select>
+      <div class="actions"><button id="addBtn" class="primary">＋ Ajouter un objet</button><button id="removeBtn">− Supprimer le dernier</button></div>
+      <div class="actions"><button id="saveBtn">💾 Sauvegarder la scène</button><button id="loadBtn">↻ Charger la scène</button></div>
+      <p id="saveStatus" class="hint">La scène est enregistrée localement dans le navigateur.</p>
+    </div>
+    <div id="settingsTab" class="tabcontent hidden">
+      <label for="speed">Vitesse du joueur <output id="speedVal">4.0</output></label><input id="speed" type="range" min="1" max="9" step=".5" value="4">
+      <label for="quality">Qualité graphique <output id="qualityVal">Équilibrée</output></label><input id="quality" type="range" min="1" max="3" step="1" value="2">
+      <div class="actions"><button id="wireBtn">Afficher le quadrillage</button><button id="shadowsBtn">Ombres : ON</button></div>
+      <p class="hint">La qualité ajuste la résolution de rendu pour équilibrer netteté et performances.</p>
+    </div>
+  </section>
+  <section class="panel info">
+    <p class="eyebrow">CE QUE CE PROTOTYPE FAIT</p>
+    <div class="feature"><span>01</span><div><b>Boucle de jeu</b><p>Mise à jour par frame, entrées tactiles et clavier.</p></div></div>
+    <div class="feature"><span>02</span><div><b>Scène 3D interactive</b><p>Caméra de poursuite, éclairage, collisions simples et objets éditables.</p></div></div>
+    <div class="feature"><span>03</span><div><b>Sauvegarde de niveau</b><p>Export/import JSON via le stockage du navigateur.</p></div></div>
+    <p class="footnote">Prototype expérimental. Les performances varient selon le téléphone. Three.js est chargé depuis un CDN ; une connexion Internet est requise.</p>
+  </section>
+</main>
+<footer>NEXUS ENGINE · 0.3 · BUILT TO EXPERIMENT</footer>
+<script type="module" src="engine.js"></script>
+</body>
+</html>
